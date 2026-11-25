@@ -15,6 +15,8 @@ Xestor persoal de tarefas, pensado para abrir, anotar e organizar o que tes pend
 
 Abre **Configuración**, exporta a copia JSON, pásaa polo medio que prefiras (por exemplo, Arquivos, iCloud Drive ou AirDrop) e impórtaa no outro dispositivo. Se coinciden identificadores, os rexistros existentes actualízanse cos valores do ficheiro. As copias poden conter información persoal: gárdaas nun lugar privado.
 
+En **Configuración** tamén se gardan automaticamente as cinco copias locais máis recentes. Podes crear unha copia ao momento, recuperar unha anterior e solicitar ao navegador que evite a eliminación automática dos datos. A aplicación tamén conserva unha copia ao migrar a base de datos. Isto axuda ante actualizacións e fallos, pero as copias seguen no mesmo navegador: para protexerte ante borrado dos datos do sitio, cambio de navegador ou perda do dispositivo, descarga a copia JSON e gárdaa noutro lugar.
+
 Os datos non se sincronizan automaticamente. Borrar os datos do navegador, cambiar de navegador ou perder o dispositivo pode eliminar tarefas locais; conserva copias de seguridade.
 
 ## Desenvolvemento
@@ -34,4 +36,4 @@ O workflow de GitHub Actions compila e publica `dist/` en cada envío á rama `m
 
 ## Esquema local
 
-Dexie crea a base IndexedDB independente `tarefas-local`, versión 1, coas táboas `tasks` e `settings`. A versión seguinte debe incluír unha migración incremental, sen borrar os datos existentes.
+Dexie crea a base IndexedDB independente `tarefas-local`, versión 2, coas táboas `tasks`, `settings` e `snapshots`. A migración desde a versión 1 conserva primeiro unha copia dos datos existentes. As versións futuras deben incluír unha migración incremental, sen borrar os datos existentes.
